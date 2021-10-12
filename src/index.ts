@@ -1,10 +1,7 @@
 import {Telegraf} from 'telegraf';
 import {config} from 'dotenv';
-import {
-  init,
-  synthesizeSpeech,
-} from './feature/text-to-speech/controller/middlewares';
-import {acl} from './feature/iam/controller/middlewares';
+import {middlewares as textToSpeech} from './feature/text-to-speech';
+import {middlewares as iam} from './feature/iam';
 import {IBotContext} from './IBotContext';
 
 config();
@@ -19,9 +16,9 @@ if (!TELEGRAM_TOKEN) {
 
 const bot = new Telegraf<IBotContext>(TELEGRAM_TOKEN);
 
-bot.use(init);
+bot.use(textToSpeech.init);
 
-bot.on('text', acl, synthesizeSpeech);
+bot.on('text', iam.acl, textToSpeech.synthesizeSpeech);
 
 bot.launch();
 

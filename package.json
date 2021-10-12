@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
+  "engines": {
+    "node": "14.16.0"
+  },
   "scripts": {
     "build": "tsc",
     "prestart": "npm run build",
@@ -14,7 +17,8 @@
     "fix": "gts fix",
     "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
-    "posttest": "npm.cmd run lint"
+    "posttest": "npm.cmd run lint",
+    "postinstall": "npm run build"
   },
   "author": "mcreader215@gmail.com",
   "license": "ISC",
