@@ -7,18 +7,16 @@
     "node": "14.16.0"
   },
   "scripts": {
-    "build": "tsc",
-    "prestart": "npm run build",
+    "prestart": "npm run compile",
     "start": "node build",
     "test": "test",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
     "fix": "gts fix",
-    "prepare": "npm.cmd run compile",
-    "pretest": "npm.cmd run compile",
-    "posttest": "npm.cmd run lint",
-    "postinstall": "npm run build"
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
   },
   "author": "mcreader215@gmail.com",
   "license": "ISC",
