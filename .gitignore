@@ -1,0 +1,11 @@
+node_modules
+
+// secret files
+service-account.json
+.env
+
+// buid folders
+build
+
+// IDEs
+.vs
