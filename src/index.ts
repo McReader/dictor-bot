@@ -6,7 +6,7 @@ import {IBotContext} from './IBotContext';
 
 config();
 
-const {TELEGRAM_TOKEN} = process.env;
+const {DOMAIN, PORT, TELEGRAM_TOKEN} = process.env;
 
 if (!TELEGRAM_TOKEN) {
   throw new Error(
@@ -20,7 +20,12 @@ bot.use(textToSpeech.init);
 
 bot.on('text', iam.acl, textToSpeech.synthesizeSpeech);
 
-bot.launch();
+bot.launch({
+  webhook: {
+    domain: DOMAIN,
+    port: Number(PORT),
+  },
+});
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
