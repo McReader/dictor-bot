@@ -2,6 +2,8 @@ import {TextToSpeechClient, protos} from '@google-cloud/text-to-speech';
 
 import {ITextToSpeech} from './ITextToSpeech';
 
+const {GOOGLE_SERVICE_ACCOUNT_CREDENTIALS = '{}'} = process.env;
+
 export class GoogleTextToSpeech implements ITextToSpeech {
   private static readonly REQUEST_TIMEOUT = 30 * 1000; // 30s
 
@@ -13,7 +15,9 @@ export class GoogleTextToSpeech implements ITextToSpeech {
     'handset-class-device',
   ];
 
-  private readonly client: TextToSpeechClient = new TextToSpeechClient();
+  private readonly client: TextToSpeechClient = new TextToSpeechClient({
+    credentials: JSON.parse(GOOGLE_SERVICE_ACCOUNT_CREDENTIALS),
+  });
 
   async synthesizeSpeech(text: string): Promise<Buffer> {
     const request: protos.google.cloud.texttospeech.v1.ISynthesizeSpeechRequest =
