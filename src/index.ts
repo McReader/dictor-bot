@@ -1,7 +1,6 @@
 import {Telegraf} from 'telegraf';
 import {config} from 'dotenv';
-import {middlewares as textToSpeech} from './feature/text-to-speech';
-import {middlewares as iam} from './feature/iam';
+import {textToSpeechBot} from './feature/text-to-speech';
 import {IBotContext} from './IBotContext';
 
 config();
@@ -16,9 +15,7 @@ if (!TELEGRAM_TOKEN) {
 
 const bot = new Telegraf<IBotContext>(TELEGRAM_TOKEN);
 
-bot.use(textToSpeech.init);
-
-bot.on('text', iam.acl, textToSpeech.synthesizeSpeech);
+bot.use(textToSpeechBot);
 
 bot.launch({
   webhook: {

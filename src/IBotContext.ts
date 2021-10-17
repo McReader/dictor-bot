@@ -1,6 +1,3 @@
-import {Context} from 'telegraf';
-import {ITextToSpeech} from './feature/text-to-speech';
+import {ITextToSpeechContext} from './feature/text-to-speech';
 
-export interface IBotContext extends Context {
-  textToSpeech: ITextToSpeech;
-}
+export type IBotContext = ITextToSpeechContext;
