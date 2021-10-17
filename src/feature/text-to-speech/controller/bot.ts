@@ -1,8 +1,10 @@
 import {Composer} from 'telegraf';
 
-import {ITextToSpeechContext} from './ITextToSpeechContext';
+import {middlewares} from '../../iam';
 
 import {GoogleTextToSpeech} from '../service/GoogleTextToSpeech';
+
+import {ITextToSpeechContext} from './ITextToSpeechContext';
 
 export const textToSpeechBot = new Composer<ITextToSpeechContext>();
 
@@ -10,6 +12,8 @@ textToSpeechBot.use((ctx, next) => {
   ctx.textToSpeech = new GoogleTextToSpeech();
   return next();
 });
+
+textToSpeechBot.use(middlewares.acl);
 
 textToSpeechBot.on('text', async ctx => {
   ctx.replyWithChatAction('record_voice');
