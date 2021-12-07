@@ -1,0 +1,27 @@
+{
+  "name": "dictor-functions-synthesize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "functions-framework --target=synthesize",
+    "prestart": "npm run compile",
+    "test": "test",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint",
+    "deploy": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^2.0.0",
+    "@google-cloud/text-to-speech": "^3.3.1",
+    "dotenv": "^10.0.0",
+    "telegraf": "^4.4.2"
+  }
+}

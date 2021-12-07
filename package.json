@@ -2,29 +2,11 @@
   "name": "dictor-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
   "engines": {
     "node": "14.16.0"
   },
-  "scripts": {
-    "prestart": "npm run compile",
-    "start": "node build",
-    "test": "test",
-    "lint": "gts lint",
-    "clean": "gts clean",
-    "compile": "tsc",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint"
-  },
   "author": "mcreader215@gmail.com",
   "license": "ISC",
-  "dependencies": {
-    "@google-cloud/text-to-speech": "^3.3.1",
-    "dotenv": "^10.0.0",
-    "telegraf": "^4.4.2"
-  },
   "devDependencies": {
     "@types/node": "^14.11.2",
     "gts": "^3.1.0",

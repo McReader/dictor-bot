@@ -9,3 +9,4 @@ build
 
 // IDEs
 .vs
+.idea
